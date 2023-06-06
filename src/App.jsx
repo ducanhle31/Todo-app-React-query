@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -16,11 +16,6 @@ import {
   deleteAllTodo
 } from "./api/todoApi";
 
-// const getTodos1 = async () => {
-//   const res = await fetch("https://dummyjson.com/todos");
-//   const data = await res.json();
-//   return data.todos
-// };
 
 function App() {
   const [input, setInput] = useState("");
@@ -28,7 +23,7 @@ function App() {
 
   const [status, setStatus] = useState("Tất cả");
   const [update, setUpdate] = useState(null);
-  // const promise = getTodos1();
+
   const queryClient = useQueryClient();
   const { isLoading, isError, error, data: todos = [] } = useQuery({
     queryKey: ["todos"],
@@ -96,69 +91,17 @@ function App() {
     }
     setInput("");
   };
-  // useEffect(() => {
-  //   promise.then((data) => {
-  //     setJob(data);
-  //   });
-  // }, []);
-  // useEffect(() => {
-  //   setLocal();
-  // }, [job]);
-  // const setLocal = () => {
-  //   localStorage.setItem("job", JSON.stringify(job));
-  // };
-  // Input function
   const handleChange = (e) => {
     const newValue = e.target.value;
     setInput(newValue);
   };
-  // const handleAdd = (e) => {
-  //   e.preventDefault();
-  //   if (update === null) {
-  //     if (input != "") {
-  //       setJob([
-  //         ...job,
-  //         {
-  //           todo: input,
-  //           id: Math.floor(Math.random() * 100000),
-  //           completed: false,
-  //         },
-  //       ]);
-  //     }
-  //   } else {
-  //     let result = job;
-  //     result.forEach((item) => {
-  //       if (item.id == update) {
-  //         item.todo = input;
-  //       }
-  //     });
-  //     setUpdate(null);
-
-  //     setJob(result);
-  //   }
-  //   setInput("");
-  // };
-  //
-  //Item function
   const handleDelete = (todo) => {
     deleteTodoMutation.mutate({ id: todo.id });
-    // let result = job.filter((item) => {
-    //   if (item.id != data.id) {
-    //     return item;
-    //   }
-    // });
-    // setJob(result);
+  
   };
   const handleComplete = (data) => {
     updateTodoMutation.mutate({ ...data, completed: !data.completed });
-    // setJob(
-    //   job.map((item) => {
-    //     if (item.id == data.id) {
-    //       item = { ...item, completed: !data.completed };
-    //     }
-    //     return item;
-    //   })
-    // );
+  
   };
   const handleEdit = (data) => {
     setInput(data.todo);
