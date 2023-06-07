@@ -22,9 +22,9 @@ export const deleteTodo = async ({ id }) => {
 };
 
 export const editTodo = async (todo) => {
-  return await todosApi.patch(`/todos/${todo.id}`, todo);
+  return await todosApi.put(`/todos/${todo.id}`, todo);
 };
 export const deleteAllTodo = async (arr) => {
-  return await todosApi.put(`/todos`, arr);
+  return await todosApi.clear(`/todos`,arr);
 };
 export default todosApi;

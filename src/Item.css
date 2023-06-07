@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background: #565656; 
+  background: #4a7270; 
   
 
   color: rgb(0, 0, 0);
@@ -34,7 +34,7 @@ li p {
   font-size: 14px;
 }
 .complete {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 .complete:hover {
   opacity: 1;

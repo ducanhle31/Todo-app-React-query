@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -23,7 +23,7 @@ function App() {
 
   const [status, setStatus] = useState("Tất cả");
   const [update, setUpdate] = useState(null);
-
+  // const promise = getTodos1();
   const queryClient = useQueryClient();
   const { isLoading, isError, error, data: todos = [] } = useQuery({
     queryKey: ["todos"],
@@ -95,13 +95,14 @@ function App() {
     const newValue = e.target.value;
     setInput(newValue);
   };
+  //Item function
   const handleDelete = (todo) => {
     deleteTodoMutation.mutate({ id: todo.id });
   
   };
   const handleComplete = (data) => {
     updateTodoMutation.mutate({ ...data, completed: !data.completed });
-  
+    
   };
   const handleEdit = (data) => {
     setInput(data.todo);
